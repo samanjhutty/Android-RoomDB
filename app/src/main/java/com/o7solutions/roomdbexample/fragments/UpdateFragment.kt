@@ -21,7 +21,7 @@ import com.o7solutions.roomdbexample.roomdb.NoteEntity
 
 class UpdateFragment : DialogFragment() {
     lateinit var binding: FragmentUpdateBinding
-    var id: Int? = 0
+    var id1: Int? = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +48,7 @@ class UpdateFragment : DialogFragment() {
     fun getData() {
         val bundle = arguments
 //
-        id = bundle?.getInt("id")
+        id1 = bundle?.getInt("id",0)
         val title = bundle?.getString("title")
         val desc = bundle?.getString("desc")
 
@@ -64,9 +64,9 @@ class UpdateFragment : DialogFragment() {
                 val note = NoteEntity()
                 note.desc = binding.etDesc.text.toString()
                 note.title = binding.etTitle.text.toString()
-                note.id = id
+                note.id = id1
 
-                id?.let { AppDb.getDatabase(requireContext()).noteDao().updateNote(note) }
+                 AppDb.getDatabase(requireContext()).noteDao().updateNote(note)
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.MyContainer, ShowNoteFragment()).commit()
                 return null

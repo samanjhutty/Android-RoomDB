@@ -46,7 +46,7 @@ class RecyclerViewAdapterShowNotes(private val list: List<NoteEntity> ,var conte
             val obj=UpdateFragment()
             val bundle=Bundle()
 
-//            bundle.putString("id",item.id.toString())
+            bundle.putInt("id", item.id!!)
             bundle.putString("title",item.title)
             bundle.putString("desc",item.desc)
             obj.arguments=bundle

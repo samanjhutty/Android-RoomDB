@@ -1,5 +1,6 @@
 package com.o7solutions.roomdbexample
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,9 +20,12 @@ class MainActivity : AppCompatActivity() {
             enteredData()
             supportFragmentManager.beginTransaction().replace(R.id.MyContainer,ShowNoteFragment()).commit()
         }
+        findViewById<Button>(R.id.btn_shared_preference).setOnClickListener{
+
+            val a=Intent(this,AnotherActivity::class.java)
+            startActivity(a)
+        }
     }
-
-
 
     fun enteredData(){
 
@@ -30,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             override fun doInBackground(vararg p0: Void?): Void? {
                 val note=NoteEntity()
                 note.title="rajacool"
-                note.desc="rajhhhhhhhhhhhjjkkacool"
+                note.desc="raja is cool"
 
                 AppDb.getDatabase(this@MainActivity).noteDao().saveData(note)
                 return null

@@ -1,5 +1,6 @@
 package com.o7solutions.roomdbexample
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,8 +16,11 @@ class AnotherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     binding=DataBindingUtil.setContentView(this,R.layout.activity_another)
+
         myPref= PrefManager(this)
+
         binding.btnStore.setOnClickListener {
+
             myPref.setPassword(binding.edPswd.text.toString())
             binding.layoutSave.visibility=View.GONE
             binding.layoutShow.visibility=View.VISIBLE
@@ -30,8 +34,11 @@ class AnotherActivity : AppCompatActivity() {
             binding.layoutSave.visibility=View.VISIBLE
 
         }
+        binding.btnRoomdb.setOnClickListener{
 
-
+            val a=Intent(this,MainActivity::class.java)
+            startActivity(a)
+        }
 
     }
 }
